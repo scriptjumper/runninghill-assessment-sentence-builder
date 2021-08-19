@@ -3,7 +3,8 @@
     templateUrl: 'app/pages/builder/builder.html',
     controllerAs: '$ctrl',
     controller: [
-      function () {
+      '$http',
+      function ($http) {
         var $ctrl = this
 
         $ctrl.wordTypes = []
@@ -12,6 +13,8 @@
         $ctrl.selectedWord = null
         $ctrl.isWordTypeSelected = false
         $ctrl.currentSentence = ''
+
+        const backendUrl = 'http://localhost:8000'
 
         $ctrl.onWordTypeChange = function () {
           $ctrl.isWordTypeSelected = true
@@ -46,11 +49,16 @@
          * Fetching all the word types available
          */
         function getWordTypes() {
-          $ctrl.wordTypes = [
-            { id: '1', title: 'Verb' },
-            { id: '2', title: 'Noun' },
-            { id: '3', title: 'Adverb' }
-          ]
+          var url = backendUrl + '/wordTypes'
+
+          $http.get(url).then(
+            function (res) {
+              $ctrl.wordTypes = res.data
+            },
+            function (error) {
+              console.log(error)
+            }
+          )
         }
 
         /**
