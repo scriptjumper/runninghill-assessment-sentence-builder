@@ -11,3 +11,4 @@ import '../app/components/app/app.js'
 
 // Pages
 import '../app/pages/welcome/welcomeCtrl.js'
+import '../app/pages/builder/builderCtrl.js'
