@@ -8,3 +8,6 @@ import '../../node_modules/@angular/router/angular1/angular_1_router.js'
 
 // App Module
 import '../app/components/app/app.js'
+
+// Pages
+import '../app/pages/welcome/welcomeCtrl.js'
