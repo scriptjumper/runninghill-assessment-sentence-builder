@@ -22,17 +22,6 @@
           getWordsByType()
         }
 
-        /**
-         * $ctrl.onWordChange()
-         *
-         * TODO: Remove function when backend is complete
-         * Using this function to see what my object will look
-         * like
-         */
-        $ctrl.onWordChange = function () {
-          console.log($ctrl.selectedWord)
-        }
-
         $ctrl.addWord = function () {
           $ctrl.currentSentence += $ctrl.selectedWord.title + ' '
         }
@@ -49,9 +38,7 @@
          * Fetching all the word types available
          */
         function getWordTypes() {
-          var url = backendUrl + '/wordTypes'
-
-          $http.get(url).then(
+          $http.get(backendUrl + '/wordTypes').then(
             function (res) {
               $ctrl.wordTypes = res.data
             },
@@ -70,17 +57,18 @@
         function getWordsByType() {
           if (!$ctrl.selectedWordType) {
             $ctrl.words = []
-            $ctrl.currentSentence = ''
-            $ctrl.isWordTypeSelected = false
 
             return
           }
 
-          $ctrl.words = [
-            { id: '1', title: 'Run' },
-            { id: '2', title: 'Easter' },
-            { id: '3', title: 'accidentally' }
-          ]
+          $http.get(backendUrl + `/words/${$ctrl.selectedWordType}`).then(
+            function (res) {
+              $ctrl.words = res.data
+            },
+            function (error) {
+              console.log(error)
+            }
+          )
         }
 
         /**
