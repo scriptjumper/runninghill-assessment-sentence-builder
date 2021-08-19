@@ -7,30 +7,42 @@
     <div class="mt-3">
       <label for="wordType">Select A Word Type</label>
       <div class="input-group">
-        <select class="form-control" id="wordType">
+        <select
+          class="form-control"
+          id="wordType"
+          ng-model="$ctrl.selectedWordType"
+          ng-change="$ctrl.onWordTypeChange()"
+          ng-options="type.id as type.title for type in $ctrl.wordTypes"
+        >
           <option value="">-- Choose Word Type --</option>
         </select>
       </div>
     </div>
 
-    <div class="mt-3">
+    <div class="mt-3" ng-show="$ctrl.isWordTypeSelected">
       <label for="word">Select A Word</label>
       <div class="input-group">
-        <select class="form-control" id="word">
+        <select
+          class="form-control"
+          id="word"
+          ng-model="$ctrl.selectedWord"
+          ng-change="$ctrl.onWordChange()"
+          ng-options="word as word.title for word in $ctrl.words"
+        >
           <option value="">-- Choose Word --</option>
         </select>
         <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary">Add Word</button>
+          <button type="button" class="btn btn-outline-secondary" ng-disabled="!$ctrl.selectedWord" ng-click="$ctrl.addWord()">Add Word</button>
         </div>
       </div>
     </div>
 
-    <div class="mt-3">
+    <div class="mt-3" ng-show="$ctrl.isWordTypeSelected">
       <label for="sentence">Current Sentence</label>
       <div class="input-group">
-        <input type="text" class="form-control" disabled />
+        <input type="text" class="form-control" ng-model="$ctrl.currentSentence" disabled />
         <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary">Save Sentence</button>
+          <button type="button" class="btn btn-outline-secondary" ng-disabled="!$ctrl.currentSentence" ng-click="$ctrl.postSentence()">Save Sentence</button>
         </div>
       </div>
     </div>
