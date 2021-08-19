@@ -1,7 +1,53 @@
 <div class="container">
   <div class="col-md-6 mx-auto text-center">
-    <div class="header-title">
-      <h1 class="wv-heading--title">Sentence Builder</h1>
+    <h1>Sentence Builder</h1>
+  </div>
+
+  <form>
+    <div class="mt-3">
+      <label for="wordType">Select A Word Type</label>
+      <div class="input-group">
+        <select class="form-control" id="wordType">
+          <option value="">-- Choose Word Type --</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <label for="word">Select A Word</label>
+      <div class="input-group">
+        <select class="form-control" id="word">
+          <option value="">-- Choose Word --</option>
+        </select>
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary">Add Word</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <label for="sentence">Current Sentence</label>
+      <div class="input-group">
+        <input type="text" class="form-control" disabled />
+        <div class="input-group-append">
+          <button type="button" class="btn btn-outline-secondary">Save Sentence</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <div class="col-md-12 mx-auto text-center">
+    <h1>My Sentences</h1>
+
+    <ul class="list-group" id="sentencelist-grp" style="margin-top: 10px">
+      <li class="list-group-item">sentence 1</li>
+      <li class="list-group-item">sentence 2</li>
+      <li class="list-group-item">sentence 3</li>
+    </ul>
+
+    <div class="alert alert-info" role="alert">
+      <i class="fa fa-info-circle" aria-hidden="true"></i>
+      You do not have any sentences. Select a word type now and get started!
     </div>
   </div>
 </div>
