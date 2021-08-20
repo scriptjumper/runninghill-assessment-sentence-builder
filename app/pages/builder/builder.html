@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-6 mx-auto text-center">
-    <h1>Sentence Builder</h1>
+    <h1 class="headings">Sentence Builder</h1>
   </div>
 
   <form>
@@ -26,7 +26,7 @@
           <option value="">-- Choose Word --</option>
         </select>
         <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary" ng-disabled="!$ctrl.selectedWord" ng-click="$ctrl.addWord()">Add Word</button>
+          <button type="button" class="btn btn-primary" ng-disabled="!$ctrl.selectedWord" ng-click="$ctrl.addWord()">Add Word</button>
         </div>
       </div>
     </div>
@@ -36,14 +36,14 @@
       <div class="input-group">
         <input type="text" class="form-control" ng-model="$ctrl.currentSentence" disabled />
         <div class="input-group-append">
-          <button type="button" class="btn btn-outline-secondary" ng-disabled="!$ctrl.currentSentence" ng-click="$ctrl.postSentence()">Save Sentence</button>
+          <button type="button" class="btn btn-primary" ng-disabled="!$ctrl.currentSentence" ng-click="$ctrl.postSentence()">Save Sentence</button>
         </div>
       </div>
     </div>
   </form>
 
   <div class="col-md-12 mx-auto text-center">
-    <h1>My Sentences</h1>
+    <h1 class="headings">My Sentences</h1>
 
     <ul class="list-group" id="sentencelist-grp" style="margin-top: 10px">
       <li ng-repeat="item in $ctrl.sentences" class="list-group-item">{{ item.sentence }}</li>
