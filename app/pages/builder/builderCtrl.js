@@ -7,6 +7,7 @@
       function ($http) {
         var $ctrl = this
 
+        $ctrl.sentences = []
         $ctrl.wordTypes = []
         $ctrl.words = []
         $ctrl.selectedWordType = null
@@ -29,7 +30,23 @@
         $ctrl.postSentence = function () {
           if (!$ctrl.currentSentence) return
 
-          console.log($ctrl.currentSentence)
+          var postObj = { sentence: $ctrl.currentSentence }
+          $http.post(backendUrl + '/sentence', JSON.stringify(postObj)).then(
+            function (res) {
+              // $alert({ content: 'Yay! Sentence saved successfully.', duration: 5, placement: 'top', type: 'success', keyboard: false, show: true })
+
+              // Resetting variables
+              $ctrl.selectedWordType = null
+              $ctrl.selectedWord = null
+              $ctrl.currentSentence = ''
+
+              getSentences()
+            },
+            function (error) {
+              // $alert({ title: 'Error saving sentence : ', duration: 5, content: error, type: 'danger' })
+              console.log(error)
+            }
+          )
         }
 
         /**
@@ -72,6 +89,22 @@
         }
 
         /**
+         * getSentences()
+         *
+         * Getting all saved sentences
+         */
+        function getSentences() {
+          $http.get(backendUrl + '/sentences').then(
+            function (res) {
+              $ctrl.sentences = res.data
+            },
+            function (error) {
+              console.log(error)
+            }
+          )
+        }
+
+        /**
          * constructor()
          *
          * First function to run in the controller
@@ -79,6 +112,7 @@
          */
         function constructor() {
           getWordTypes()
+          getSentences()
         }
 
         constructor()
