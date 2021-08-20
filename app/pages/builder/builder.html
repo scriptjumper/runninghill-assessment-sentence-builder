@@ -46,12 +46,10 @@
     <h1>My Sentences</h1>
 
     <ul class="list-group" id="sentencelist-grp" style="margin-top: 10px">
-      <li class="list-group-item">sentence 1</li>
-      <li class="list-group-item">sentence 2</li>
-      <li class="list-group-item">sentence 3</li>
+      <li ng-repeat="item in $ctrl.sentences" class="list-group-item">{{ item.sentence }}</li>
     </ul>
 
-    <div class="alert alert-info" role="alert">
+    <div ng-hide="$ctrl.sentences.length > 0" class="alert alert-info" role="alert">
       <i class="fa fa-info-circle" aria-hidden="true"></i>
       You do not have any sentences. Select a word type now and get started!
     </div>
