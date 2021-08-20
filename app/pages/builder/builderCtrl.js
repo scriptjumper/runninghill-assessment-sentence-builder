@@ -32,9 +32,7 @@
 
           var postObj = { sentence: $ctrl.currentSentence }
           $http.post(backendUrl + '/sentence', JSON.stringify(postObj)).then(
-            function (res) {
-              // $alert({ content: 'Yay! Sentence saved successfully.', duration: 5, placement: 'top', type: 'success', keyboard: false, show: true })
-
+            function () {
               // Resetting variables
               $ctrl.selectedWordType = null
               $ctrl.selectedWord = null
@@ -43,7 +41,6 @@
               getSentences()
             },
             function (error) {
-              // $alert({ title: 'Error saving sentence : ', duration: 5, content: error, type: 'danger' })
               console.log(error)
             }
           )
