@@ -42,6 +42,8 @@ Make sure you have the following install on your machine
 
 ### Installation
 
+> Before setting up the Sentence Builder App, ensure you clone and setup the NodeJS API [here](https://github.com/scriptjumper/sentence-builder-api)
+
 1. Clone the repo
 
 ```shell
